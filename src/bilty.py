@@ -216,7 +216,7 @@ class NNTagger(object):
         self.set_indices(w2i,c2i,task2t2i)
 
         if dev:
-            dev_X, dev_Y, org_X, org_Y, task_labels = self.get_data_as_indices(dev, "task0")
+            dev_X, dev_Y, org_X, org_Y, dev_task_labels = self.get_data_as_indices(dev, "task0")
 
         # init lookup parameters and define graph
         print("build graph",file=sys.stderr)
@@ -255,7 +255,7 @@ class NNTagger(object):
             
             if dev:
                 # evaluate after every epoch
-                correct, total = self.evaluate(dev_X, dev_Y, org_X, org_Y, task_labels)
+                correct, total = self.evaluate(dev_X, dev_Y, org_X, org_Y, dev_task_labels)
                 print("\ndev accuracy: %.4f" % (correct/total), file=sys.stderr)
 
 
